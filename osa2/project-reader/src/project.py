@@ -1,7 +1,8 @@
 class Project:
-    def __init__(self, name, description, authors, dependencies, dev_dependencies):
+    def __init__(self, name, description, license, authors, dependencies, dev_dependencies):
         self.name = name
         self.description = description
+        self.license = license
         self.authors = authors
         self.dependencies = dependencies
         self.dev_dependencies = dev_dependencies
@@ -13,6 +14,7 @@ class Project:
         return (
             f"Name: {self.name}"
             f"\nDescription: {self.description or '-'}"
+            f"\nLicense: {self.license or '-'}"
             f"\n"
             f"\nAuthors: "
             f"\n{self._stringify_dependencies(self.authors)}"

@@ -12,13 +12,18 @@ class ProjectReader:
         #print(content)
         
         parsed_content = toml.loads(content)
-        #print(parsed_content)
+        print(parsed_content)
         #print(parsed_content["tool"]["poetry"]["name"])
         #print(parsed_content["tool"]["poetry"]["description"])
         #print(list(parsed_content["tool"]["poetry"]["dependencies"]))
 
         # deserialisoi TOML-formaatissa oleva merkkijono ja muodosta Project-olio sen tietojen perusteella
-        return Project(parsed_content["tool"]["poetry"]["name"], parsed_content["tool"]["poetry"]["description"], parsed_content["tool"]["poetry"]["authors"], list(parsed_content["tool"]["poetry"]["dependencies"]), list(parsed_content["tool"]["poetry"]["dev-dependencies"]))
+        return Project(parsed_content["tool"]["poetry"]["name"],
+                       parsed_content["tool"]["poetry"]["description"],
+                       parsed_content["tool"]["poetry"]["license"],
+                       parsed_content["tool"]["poetry"]["authors"],
+                       list(parsed_content["tool"]["poetry"]["dependencies"]),
+                       list(parsed_content["tool"]["poetry"]["group"]["dev"]["dependencies"]))
     
     #def main():
         
